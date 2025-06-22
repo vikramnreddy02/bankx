@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transaction-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transaction
+  template:
+    metadata:
+      labels:
+        app: transaction
+    spec:
+      containers:
+        - name: transaction
+          image: transaction-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: postgres-url
