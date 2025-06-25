@@ -1,7 +1,7 @@
 /* Base Reset */
 body {
   font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-  background: #f0f2f5;
+  background: linear-gradient(to right, #f0f2f5, #e0e7ff);
   margin: 0;
   color: #333;
   line-height: 1.6;
@@ -111,5 +111,19 @@ table td {
 
 table tbody tr:hover {
   background: #f9fafb;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
 }
 
