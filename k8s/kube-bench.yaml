@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-bench
+spec:
+  hostPID: true
+  restartPolicy: Never
+  containers:
+  - name: kube-bench
+    image: aquasec/kube-bench:latest
+    args: ["run", "--benchmark", "cis-1.23"]
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - name: etc
+      mountPath: /etc
+      readOnly: true
+    - name: etc-kubernetes
+      mountPath: /etc/kubernetes
+      readOnly: true
+    - name: varlib
+      mountPath: /var/lib
+      readOnly: true
+    - name: usrbin
+      mountPath: /usr/bin
+      readOnly: true
+    - name: boot
+      mountPath: /boot
+      readOnly: true
+    - name: libmodules
+      mountPath: /lib/modules
+      readOnly: true
+  volumes:
+  - name: etc
+    hostPath:
+      path: /etc
+  - name: etc-kubernetes
+    hostPath:
+      path: /etc/kubernetes
+  - name: varlib
+    hostPath:
+      path: /var/lib
+  - name: usrbin
+    hostPath:
+      path: /usr/bin
+  - name: boot
+    hostPath:
+      path: /boot
+  - name: libmodules
+    hostPath:
+      path: /lib/modules
+

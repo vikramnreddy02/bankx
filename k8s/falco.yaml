@@ -1,0 +1,67 @@
+# falco.yaml - Falco configuration file
+
+# List of enabled rules files
+rules_file:
+  - /etc/falco/falco_rules.yaml
+  - /etc/falco/falco_rules.local.yaml
+  - /etc/falco/k8s_audit_rules.yaml
+
+# Run as daemon
+daemon: true
+
+# Buffer size for each syscall event
+syscall_buf_size: 32768
+
+# Priority levels (debug, info, notice, warning, error, critical, alert, emergency)
+log_level: info
+
+# Where to write logs
+log_output:
+  - stdout
+
+# Time format for logs
+log_stderr_time: true
+
+# Output format for events
+output_format: json
+
+# Rules engine behavior
+json_output: true
+
+# Where to send alerts
+outputs:
+  - stdout: true
+  - file_output:
+      enabled: true
+      filename: /var/log/falco_events.log
+  - http_output:
+      enabled: false
+      url: "http://localhost:2801"
+
+# Whether to include the container name and ID in the output
+print_container_info: true
+
+# Kubernetes support (set true if running in Kubernetes)
+k8s_api: ""
+k8s_api_cert: ""
+k8s_api_key: ""
+k8s_api_ca: ""
+k8s_auth: false
+k8s_cluster_name: default
+
+# Watch for audit log events (disable if not using audit log feature)
+audit_log_enabled: false
+
+# How often (in seconds) to check for file changes in rules
+file_monitoring_interval: 10
+
+# Load Falco driver if not found
+load_falco_driver: true
+
+# Whether to enable Falco’s gRPC server (disabled by default)
+grpc:
+  enabled: false
+
+# Optional performance tuning
+buffered_outputs: false
+

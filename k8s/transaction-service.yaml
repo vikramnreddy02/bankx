@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: transaction-service
+spec:
+  selector:
+    app: transaction
+  ports:
+    - protocol: TCP
+      port: 80           # <-- Changed from 8000 to 80
+      targetPort: 8000   # <-- Still maps to containerPort 8000
+
