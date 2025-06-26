@@ -1,3 +1,30 @@
+.card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1e3a8a;
+}
+
+/* === Fullscreen Background Layout === */
+body, html, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #f0f2f5, #e0e7ff);
+}
+
+
 /* === Global Reset === */
 body {
   font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
@@ -42,12 +69,14 @@ button:hover {
 /* === Login Page Card (Restore) === */
 .card {
   width: 100%;
-  max-width: 450px;
-  margin: 4rem auto;
-  padding: 2rem;
-  background: #fff;
+  max-width: 400px;
+  padding: 2.5rem;
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 /* === Dashboard Scoped Styling === */
@@ -167,6 +196,7 @@ button:hover {
 }
 
 /* === Login Inputs === */
+/* === Login Inputs === */
 .card input {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -174,6 +204,7 @@ button:hover {
   border-radius: 10px;
   font-size: 1rem;
   transition: border-color 0.2s;
+  margin-bottom: 1rem;  /* ✅ Adds vertical spacing between inputs */
 }
 
 .card input:focus {

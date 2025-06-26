@@ -1,0 +1,38 @@
+name: Snyk Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js (only if it's a Node app; skip if not)
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install Snyk CLI
+      run: npm install -g snyk
+
+    - name: Authenticate Snyk
+      run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+    - name: Run Snyk test on source code
+      run: snyk test
+
+    - name: Run Snyk on Docker image
+      run: |
+        docker build -t myapp:latest .
+        snyk container test myapp:latest
+
+    - name: Snyk test on Kubernetes manifests
+      run: snyk iac test /k8s
+

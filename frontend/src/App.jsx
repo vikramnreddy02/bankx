@@ -8,12 +8,16 @@ import './App.css';
 export default function App() {
   return (
     <BrowserRouter basename="/">
+      <div className="app-layout">
         <Header />
-      <Routes>
-        <Route path="/"          element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-      <Footer />
+        <div className="app-main">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
