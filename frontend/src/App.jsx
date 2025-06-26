@@ -8,11 +8,13 @@ import './App.css';
 export default function App() {
   return (
     <BrowserRouter basename="/">
-        <Header />
-      <Routes>
-        <Route path="/"          element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
+      <Header />
+      <div className="content">
+        <Routes>
+          <Route path="/"          element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
       <Footer />
     </BrowserRouter>
   );
