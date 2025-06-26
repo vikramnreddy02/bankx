@@ -143,6 +143,15 @@ button:hover {
   font-size: 1.8rem;
   letter-spacing: 1px;
 }
+
+/* === Footer === */
+.footer {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
 /* === Login Card === */
 .card {
   width: 100%;
